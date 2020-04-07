@@ -13,7 +13,7 @@ export default function Products() {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
 
-  console.log("products", products);
+  // console.log("products", products);
 
   useEffect(() => {
     dispatch(fetchProducts());

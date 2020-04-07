@@ -2,7 +2,10 @@ import { PRODUCT_DETAILS_FETCHED } from "./actions";
 
 const initialState = {
   loading: false, 
-
+  productName: null, 
+  imageUrl: null, 
+  price: null, 
+  description: null
 };
 
 export default (state = initialState, action) => {
