@@ -12,8 +12,8 @@ import { NavDropdown } from "react-bootstrap";
 export default function Navigation() {
   const token = useSelector(selectToken);
 
-  // const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
-  const loginLogoutControls = <LoggedIn />;
+  const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+  // const loginLogoutControls = <LoggedIn />;
 
   return (
     <Navbar bg="light" expand="lg">
