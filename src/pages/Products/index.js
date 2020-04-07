@@ -11,14 +11,15 @@ import ProductCard from "../../components/ProductCard";
 
 export default function Products() {
   const dispatch = useDispatch();
-    const products = useSelector(selectProducts);
+  const products = useSelector(selectProducts);
 
   // console.log("products", products);
 
   useEffect(() => {
-    // dispatch(fetchProducts());
-    console.log("hi");
+    dispatch(fetchProducts());
   }, [dispatch]);
+
+  if (!products) return <h6>Loading</h6>;
 
   return (
     <div>
@@ -27,29 +28,19 @@ export default function Products() {
       </Jumbotron>
       <Container>
         <Row>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-
-          {/* {products.map(products => {
+          {products.map((product) => {
             return (
               <ProductCard
                 key={product.id}
-                // key={product.title}
                 id={product.id}
-                title={product.title}
+                productName={product.productName}
                 imageUrl={product.imageUrl}
-                hearts={product.hearts}
-                minimumBid={product.minimumBid}
+                description={product.description}
                 userId={product.userId}
                 showLink={true}
-                bids={product.bids}
               />
             );
-          })} */}
+          })}
         </Row>
       </Container>
     </div>

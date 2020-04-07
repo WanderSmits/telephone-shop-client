@@ -22,8 +22,8 @@ export const fetchProductById = id => {
       dispatch(appLoading());
       try {
         const response = await axios.get(`${apiUrl}/products/${id}`);
-        // console.log("RESPONSE FROM THE THUNK", response.data.product);
-        dispatch(productDetailsFetched(response.data.product));
+        // console.log("RESPONSE FROM THE THUNK", response.data);
+        dispatch(productDetailsFetched(response.data));
         dispatch(appDoneLoading());
       } catch (error) {
         if (error.response) {
