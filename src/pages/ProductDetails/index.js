@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import Jumbotron from "react-bootstrap/Jumbotron";
+import Col from "react-bootstrap/Col";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
-export default function ProductDetails() {
+export default function ProductDetails(props) {
   return (
-    <div>
-      <Jumbotron>
-        <h1>Product Details</h1>
-      </Jumbotron>
+    <Col sm={12} md={4} className="mb-4" key={props.id}>
+      <h1>Product Details</h1>
       <Card>
         <Card.Body>
           <Card.Img
@@ -17,6 +16,50 @@ export default function ProductDetails() {
           />
         </Card.Body>
       </Card>
-    </div>
+      <div>
+        <h2> Product Description</h2>
+        <div>
+          Phasellus orci est, suscipit id ornare sit amet, gravida tempor
+          libero. Integer consequat tempor porta. Morbi odio velit, maximus eget
+          maximus eu, sollicitudin in ligula. Donec rhoncus risus vel elementum
+          faucibus. Sed vel rutrum diam, ut facilisis justo. Vestibulum ante
+          ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+          Curae; Mauris molestie varius lacus id laoreet. Aenean euismod elit
+          nisi, sit amet ultrices nibh pharetra non.
+        </div>
+      </div>
+    </Col>
   );
 }
+
+// import React, { useEffect } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import Products from "../Products";
+
+// import { fetchProductById } from "../../store/productDetails/actions";
+// import { selectProductDetails } from "../../store/productDetails/selectors";
+
+// export default function ProductDetails() {
+//   const { id } = useParams();
+//   const product = useSelector(selectProductDetails);
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(fetchProductById(id));
+//   }, [dispatch, id]);
+
+//   return (
+//     <>
+//       <Products
+//         id={product.id}
+//         operatingSystem={product.operatingSystem}
+//         batteryLife={product.batteryLife}
+//         screenSize={product.screenSize}
+//         weightInGrams={product.weightInGrams}
+//         virtualAssistant={product.virtualAssistant}
+//         guaranteeInYears={product.guaranteeInYears}
+//         showLink={false}
+//       />
+//     </>
+//   );
+// }

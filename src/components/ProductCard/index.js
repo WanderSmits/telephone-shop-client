@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ProductCard(props) {
   return (
@@ -21,15 +21,13 @@ export default function ProductCard(props) {
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
           </Card.Text>
-          {/* <Link to={`/artworks/${props.id}`}> */}
+          <Link to={`/products/1`}>
             <Button className="mb-2" variant="success">
               See more
             </Button>
-          {/* </Link> */}
+          </Link>
         </Card.Body>
       </Card>
-
-
     </Col>
   );
 }
