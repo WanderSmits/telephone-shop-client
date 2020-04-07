@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchArtworks } from "../../store/artworks/actions";
-// import { selectArtworks } from "../../store/artworks/selectors";
+import { fetchProducts } from "../../store/products/actions";
+import { selectProducts } from "../../store/products/selectors";
 
 import { Jumbotron } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
@@ -11,13 +11,13 @@ import ProductCard from "../../components/ProductCard";
 
 export default function Products() {
   const dispatch = useDispatch();
-  //   const artworks = useSelector(selectArtworks);
+    const products = useSelector(selectselectProductsArtworks);
 
-  // console.log("ARTWORKS HOME PGAE", typeof artworks);
-  // console.log("ARTWORKS", artworks.bids);
+  // console.log("products", products);
 
   useEffect(() => {
-    // dispatch(fetchArtworks());
+    // dispatch(fetchProducts());
+    console.log("hi");
   }, [dispatch]);
 
   return (
@@ -34,19 +34,19 @@ export default function Products() {
           <ProductCard />
           <ProductCard />
 
-          {/* {artworks.map(artwork => {
+          {/* {products.map(products => {
             return (
               <ProductCard
-                key={artwork.id}
-                // key={artwork.title}
-                id={artwork.id}
-                title={artwork.title}
-                imageUrl={artwork.imageUrl}
-                hearts={artwork.hearts}
-                minimumBid={artwork.minimumBid}
-                userId={artwork.userId}
+                key={product.id}
+                // key={product.title}
+                id={product.id}
+                title={product.title}
+                imageUrl={product.imageUrl}
+                hearts={product.hearts}
+                minimumBid={product.minimumBid}
+                userId={product.userId}
                 showLink={true}
-                bids={artwork.bids}
+                bids={product.bids}
               />
             );
           })} */}

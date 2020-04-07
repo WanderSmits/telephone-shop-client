@@ -1,6 +1,7 @@
 import { FETCH_PRODUCTS_SUCCESS } from "./actions";
 
 const initialState = {
+  loading: false,
   productName: null,
   price: null,
   details: null,
