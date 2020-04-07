@@ -11,7 +11,7 @@ import ProductCard from "../../components/ProductCard";
 
 export default function Products() {
   const dispatch = useDispatch();
-    const products = useSelector(selectselectProductsArtworks);
+  // const products = useSelector(selectselectProductsArtworks);
 
   // console.log("products", products);
 
