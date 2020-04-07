@@ -6,6 +6,7 @@ import { selectUser } from "../../store/user/selectors";
 import Nav from "react-bootstrap/Nav";
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 import {
   faShoppingCart,
@@ -24,7 +25,7 @@ export default function LoggedIn() {
       <NavbarBrand href="#home">
         <FontAwesomeIcon className="mr-3" icon={faUser} />
       </NavbarBrand>
-      <NavbarBrand href="#home">
+      <NavbarBrand as={Link} to="/cart">
         <FontAwesomeIcon className="mr-3" icon={faShoppingCart} />
       </NavbarBrand>
       <Button onClick={() => dispatch(logOut())}>Logout</Button>
