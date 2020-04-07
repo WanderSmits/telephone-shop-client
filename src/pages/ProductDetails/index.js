@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 export default function ProductDetails() {
   const { id } = useParams();
   const product = useSelector(selectProductDetails);
-  // const details = product.detail;
   const dispatch = useDispatch();
 
   // console.log("products in the component", product);
@@ -40,6 +39,14 @@ export default function ProductDetails() {
               src={product.imageUrl}
               alt="Product"
             />
+            <h5 className="mt-4">Contact info</h5>
+            <p>
+              Owner: {product.user.name}
+              <br />
+              Email: {product.user.email}
+              <br />
+              Phone: {product.user.phone}
+            </p>
           </Col>
           <Col md="7">
             <h4>{product.productName}</h4>
@@ -80,9 +87,12 @@ export default function ProductDetails() {
                 </tr>
               </tbody>
             </Table>
-            <Button className="mb-5 mt-3" variant="success">
-              Add to Cart
-            </Button>
+            <div className="mb-5 mt-3 align-middle">
+              <div className="d-inline mr-3">&euro; {product.price}</div>
+              <Button variant="success">
+                Add to Cart
+              </Button>
+            </div>
           </Col>
         </Row>
       </Container>
