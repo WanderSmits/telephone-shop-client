@@ -14,7 +14,6 @@ import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import Products from "./pages/Products";
 
-
 const Other = () => (
   <Jumbotron>
     <h1>Other</h1>
