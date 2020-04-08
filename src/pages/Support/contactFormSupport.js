@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { Container, Form, Col, Table, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+// import { postForm } from "../../store/user/actions";
 
 export default function ContactFormSupport() {
-  // const [name, setName] = useState("");
-  // const [question, setQuestion] = useState("");
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [question, setQuestion] = useState("");
+
+  function submitForm(event) {
+    event.preventDefault();
+
+    // console.log(name, content, imageUrl);
+    // dispatch(postForm(name, question));
+  }
 
   return (
     <Container>
@@ -12,6 +22,8 @@ export default function ContactFormSupport() {
         <Form.Group>
           <Form.Label>Name</Form.Label>
           <Form.Control type="Name" placeholder="Your Name" />
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Label>What's this about ? </Form.Label>
@@ -19,14 +31,19 @@ export default function ContactFormSupport() {
             <option>Delivery</option>
             <option>Opening time</option>
             <option>New Products</option>
-            <option>Marketin</option>
+            <option>Marketing</option>
             <option>Career</option>
             <option>Other</option>
           </Form.Control>
         </Form.Group>
         <Form.Group>
           <Form.Label>Question</Form.Label>
-          <Form.Control />
+          <Form.Control
+            type="text"
+            placeholder="Your Question"
+            value={question}
+            onChange={(event) => setQuestion(event.target.value)}
+          />
         </Form.Group>
         <Button> Send</Button>
       </Form>
