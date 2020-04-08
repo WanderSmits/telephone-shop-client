@@ -17,7 +17,7 @@ export const fetchCartProductsSuccess = (product) => ({
 
 export const addToCart = (id) => {
   return async (dispatch, getState) => {
-    console.log(`what is id?`, id);
+    // console.log(`what is id?`, id);
     dispatch(appLoading());
     try {
       const response = await axios.get(`${apiUrl}/products/${id}`);

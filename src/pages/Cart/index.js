@@ -19,74 +19,95 @@ import {
 export default function CartPage() {
   const cartProducts = useSelector(selectCart);
   const dispatch = useDispatch();
+  const [expressDel, setExpressDel] = useState(false);
+  const [color, setColor] = useState("Black");
+  const [description, setDescription] = useState("");
 
   const allProducts = Object.values(cartProducts).map((keys, values) => {
     return parseInt(cartProducts[values].id);
   });
 
-  console.log("CArt products?", cartProducts);
-
   function submitOrder(id) {
-    console.log("Id?", id);
-    dispatch(postOrder(id));
+    // console.log("Id?", allProducts);
+    console.log("all products", allProducts);
+    dispatch(postOrder(expressDel, color, description));
+  }
+
+  function handleChecked(event) {
+    setExpressDel(event.target.checked);
   }
 
   return (
     <main>
-      <div>
-        <Jumbotron>
-          <h2> These are your selected products</h2>
-        </Jumbotron>
-      </div>
+      <Jumbotron>
+        <h2> These are your selected products</h2>
+      </Jumbotron>
       <Container>
         <Row>
-          {cartProducts.map((product) => {
-            return (
-              <CartCard
-                key={product.id}
-                id={product.id}
-                productName={product.productName}
-                imageUrl={product.imageUrl}
-                description={product.description}
-                userId={product.userId}
-                price={product.price}
-                showLink={true}
-              />
-            );
-          })}
+          <Col sm={12} md={8}>
+            {cartProducts.map((product) => {
+              return (
+                <CartCard
+                  key={product.id}
+                  id={product.id}
+                  productName={product.productName}
+                  imageUrl={product.imageUrl}
+                  description={product.description}
+                  userId={product.userId}
+                  price={product.price}
+                  showLink={true}
+                />
+              );
+            })}
+            Total: 65
+          </Col>
+          <Col sm={12} md={4} className="mb-4">
+            <Form>
+              <h4>Checkout</h4>
+              {/* <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Color</Form.Label>
+                <Form.Control
+                  as="select"
+                  defaultValue={color}
+                  onChange={(event) => {
+                    setColor(event.target.value);
+                  }}
+                  className="form-control"
+                >
+                  <option value={"Black"}>Black</option>
+                  <option value={"Silver"}>Silver</option>
+                  <option value={"White"}>White</option>
+                </Form.Control>
+              </Form.Group> */}
+              <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Shipping address</Form.Label>
+                <Form.Control
+                  rows="3"
+                  as="textarea"
+                  placeholder="Your Description"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Check
+                  label="Express delivery (+10$)"
+                  type="checkbox"
+                  value={expressDel}
+                  checked={expressDel}
+                  onChange={handleChecked}
+                />
+              </Form.Group>
+              Total Price:
+              <Button onClick={submitOrder}>Buy now!</Button>
+            </Form>
+            <i>By placing the order you agree with the delivery terms.</i>
+            <p>Need help?</p>
+            <p>Contact us</p>
+            <p>Accepted payment methods</p>
+          </Col>
         </Row>
       </Container>
-
-      <div>
-        <Col sm={12} md={4} className="mb-4">
-          <Card>
-            <Card.Body>
-              <Card.Title>Choose delivery</Card.Title>
-              <Card.Text>
-                {" "}
-                <input type="checkbox" /> Express delivery (+10$)
-              </Card.Text>
-              <Card.Text>
-                <input type="checkbox" /> Standard delivery (free)
-              </Card.Text>
-              <Card.Text>Total Price: Sum of all products + delivery</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </div>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h3 className="mt-5 mb-5">Your information</h3>
-        <Form.Group>
-          <Form.Label>Adress</Form.Label>
-          <Form.Control />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Last Name</Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Button onClick={() => submitOrder(allProducts)}> Buy now!</Button>
-      </Form>
     </main>
   );
 }
