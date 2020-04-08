@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import CartCard from "../../components/CartProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCart } from "../../store/cart/selectors";
-import { postOrder } from "../../store/cart/actions";
+import { postOrder } from "../../store/postOrder/actions";
+import { selectOrder } from "../../store/postOrder/selector";
+import { addToCart } from "../../store/cart/actions";
 
 import {
   Jumbotron,
@@ -22,9 +24,12 @@ export default function CartPage() {
     return parseInt(cartProducts[values].id);
   });
 
+  console.log("CArt products?", cartProducts);
+
   function submitOrder(id) {
     console.log("Id?", id);
     dispatch(postOrder(id));
+    // setcartProducts([]);
   }
 
   return (
