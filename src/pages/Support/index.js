@@ -63,7 +63,7 @@ export default function Support() {
           Contact Us!
         </Link> */}
         <ContactFormSupport />
-        <TermsCondition />
+        {/* <TermsCondition /> */}
       </Container>
     </div>
   );
