@@ -65,10 +65,10 @@ export const postOrder = (productId) => {
 
     dispatch(setMessage("success", true, response.data.message));
 
-    dispatch({
-      type: "POST_ORDER",
-      payload: response.data,
-    });
+    // dispatch({
+    //   type: "POST_ORDER",
+    //   payload: response.data,
+    // });
 
     dispatch(appDoneLoading());
   };
