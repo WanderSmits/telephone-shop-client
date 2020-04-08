@@ -1,9 +1,22 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import CartCard from "../../components/CartProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCart } from "../../store/cart/selectors";
 
-import { Jumbotron, Container, Button, Form, Col, Card } from "react-bootstrap";
+import {
+  Jumbotron,
+  Container,
+  Button,
+  Form,
+  Col,
+  Card,
+  Row,
+} from "react-bootstrap";
 
 export default function CartPage() {
+  const cartProducts = useSelector(selectCart);
+  // console.log(`logging cartProducts`, cartProducts);
+
   return (
     <main>
       <div>
@@ -11,8 +24,25 @@ export default function CartPage() {
           <h2> These are your selected products</h2>
         </Jumbotron>
       </div>
-      <Container> Product 1 goes here </Container>
-      <Container> Product 2 goes here </Container>
+      <Container>
+        <Row>
+          {cartProducts.map((product) => {
+            return (
+              <CartCard
+                key={product.id}
+                id={product.id}
+                productName={product.productName}
+                imageUrl={product.imageUrl}
+                description={product.description}
+                userId={product.userId}
+                price={product.price}
+                showLink={true}
+              />
+            );
+          })}
+        </Row>
+      </Container>
+
       <div>
         <Col sm={12} md={4} className="mb-4">
           <Card>
@@ -33,20 +63,11 @@ export default function CartPage() {
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
         <h3 className="mt-5 mb-5">Your information</h3>
         <Form.Group>
-          <Form.Label>First Name</Form.Label>
+          <Form.Label>Adress</Form.Label>
           <Form.Control />
         </Form.Group>
         <Form.Group>
           <Form.Label>Last Name</Form.Label>
-          <Form.Control />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Phone number</Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label>Adress</Form.Label>
           <Form.Control />
         </Form.Group>
 
