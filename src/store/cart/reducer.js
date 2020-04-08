@@ -8,6 +8,9 @@ export default (state = initialState, action) => {
 
       return [...state, { ...action.payload }];
 
+    case "POST_ORDER":
+      return action.payload;
+
     default:
       return state;
   }
