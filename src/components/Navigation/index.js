@@ -19,6 +19,7 @@ export default function Navigation() {
       <Navbar.Brand as={NavLink} to="/">
         Telephone Webshop
       </Navbar.Brand>
+
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
@@ -27,7 +28,7 @@ export default function Navigation() {
         </Nav>
       </Navbar.Collapse>
       <Navbar.Collapse className="justify-content-end">
-      {loginLogoutControls}
+        {loginLogoutControls}
       </Navbar.Collapse>
     </Navbar>
   );

@@ -99,3 +99,35 @@ export default function ProductDetails() {
     </div>
   );
 }
+
+// import React, { useEffect } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import Products from "../Products";
+
+// import { fetchProductById } from "../../store/productDetails/actions";
+// import { selectProductDetails } from "../../store/productDetails/selectors";
+
+// export default function ProductDetails() {
+//   const { id } = useParams();
+//   const product = useSelector(selectProductDetails);
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(fetchProductById(id));
+//   }, [dispatch, id]);
+
+//   return (
+//     <>
+//       <Products
+//         id={product.id}
+//         operatingSystem={product.operatingSystem}
+//         batteryLife={product.batteryLife}
+//         screenSize={product.screenSize}
+//         weightInGrams={product.weightInGrams}
+//         virtualAssistant={product.virtualAssistant}
+//         guaranteeInYears={product.guaranteeInYears}
+//         showLink={false}
+//       />
+//     </>
+//   );
+// }
