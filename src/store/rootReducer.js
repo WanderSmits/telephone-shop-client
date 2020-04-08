@@ -4,6 +4,7 @@ import user from "./user/reducer";
 import products from "./products/reducer";
 import productDetails from "./productDetails/reducer";
 import cart from "./cart/reducer";
+import support from "./support/reducer";
 
 export default combineReducers({
   appState,
@@ -11,4 +12,5 @@ export default combineReducers({
   products,
   productDetails,
   cart,
+  support, 
 });

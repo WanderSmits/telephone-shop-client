@@ -9,17 +9,16 @@ export default function ContactFormSupport() {
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
-  const [optionsState, setOptionsState] = useState(1);
-
-  
-
-  // console.log(subject, description, link, optionsState);
+  const [optionsState, setOptionsState] = useState("");
   
 
   function submitForm(event) {
     event.preventDefault();
     // console.log(subject, description, link, optionsState);
     dispatch(postSupport(subject, description, link, optionsState));
+    setSubject("");
+    setDescription("");
+    setLink("");
   }
 
   return (
