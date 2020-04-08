@@ -25,6 +25,7 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Products" />
           <NavbarItem path="/support" linkText="Support" />
+          <NavbarItem path="/contactUs" linkText="Contact Us" />
         </Nav>
       </Navbar.Collapse>
       <Navbar.Collapse className="justify-content-end">
