@@ -2,6 +2,7 @@ import React from "react";
 import CartCard from "../../components/CartProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCart } from "../../store/cart/selectors";
+import { postOrder } from "../../store/cart/actions";
 
 import {
   Jumbotron,
@@ -15,7 +16,16 @@ import {
 
 export default function CartPage() {
   const cartProducts = useSelector(selectCart);
-  // console.log(`logging cartProducts`, cartProducts);
+  const dispatch = useDispatch();
+
+  const allProducts = Object.values(cartProducts).map((keys, values) => {
+    return parseInt(cartProducts[values].id);
+  });
+
+  function submitOrder(id) {
+    console.log("Id?", id);
+    dispatch(postOrder(id));
+  }
 
   return (
     <main>
@@ -71,7 +81,7 @@ export default function CartPage() {
           <Form.Control />
         </Form.Group>
 
-        <Button> Buy now!</Button>
+        <Button onClick={() => submitOrder(allProducts)}> Buy now!</Button>
       </Form>
     </main>
   );

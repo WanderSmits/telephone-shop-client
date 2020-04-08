@@ -1,6 +1,7 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
-import { selectToken } from "./selectors";
+import { selectToken, selectUser } from "./selectors";
+
 import {
   appLoading,
   appDoneLoading,
@@ -34,7 +35,10 @@ export const signUp = (name, email, password, isOwner) => {
         name,
         email,
         password,
+
         isOwner,
+
+
       });
 
       dispatch(loginSuccess(response.data));
@@ -106,6 +110,51 @@ export const getUserWithStoredToken = () => {
       // if we get a 4xx or 5xx response,
       // get rid of the token by logging out
       dispatch(logOut());
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const postNewProduct = (productName, imageUrl, price, description) => {
+  return async (dispatch, getState) => {
+    const user = selectUser(getState());
+
+    // console.log(
+    //   `Whatdo I try to post?`,
+    //   productName,
+    //   imageUrl,
+    //   price,
+    //   description,
+    //   user.id,
+    //   user.token
+    // );
+    dispatch(appLoading());
+    try {
+      const response = await axios.post(
+        `${apiUrl}/products`,
+        {
+          productName,
+          imageUrl,
+          price,
+          description,
+          userId: user.id,
+        },
+        {
+          headers: { Authorization: `Bearer ${user.token}` },
+        }
+      );
+
+      console.log(`What is the new posted product?`, response.data);
+
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
       dispatch(appDoneLoading());
     }
   };
