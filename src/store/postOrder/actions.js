@@ -39,7 +39,6 @@ export const postOrder = (productId) => {
 
     dispatch({
       type: "POST_ORDER",
-      payload: response.data,
     });
 
     dispatch(appDoneLoading());

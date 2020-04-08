@@ -29,7 +29,6 @@ export default function CartPage() {
   function submitOrder(id) {
     console.log("Id?", id);
     dispatch(postOrder(id));
-    // setcartProducts([]);
   }
 
   return (
