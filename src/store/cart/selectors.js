@@ -1,1 +1,1 @@
-export const selectOrders = (reduxState) => reduxState;
+export const selectCart = (reduxState) => reduxState.cart;

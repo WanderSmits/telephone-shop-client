@@ -1,5 +1,5 @@
 import React from "react";
-import { addToCart } from "../../store/cart/actions";
+
 import { useDispatch } from "react-redux";
 
 import { Button } from "react-bootstrap";
@@ -7,13 +7,8 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 
-export default function ProductCard(props) {
+export default function CartCard(props) {
   const dispatch = useDispatch();
-
-  const cartHandler = (id) => {
-    dispatch(addToCart(id));
-    // console.log(`click cart`, id);
-  };
 
   return (
     <Col sm={12} md={3} className="mb-4">
@@ -32,13 +27,10 @@ export default function ProductCard(props) {
               See more
             </Button>
           </Link>
-          <Button
-            className="mb-2"
-            variant="success"
-            onClick={() => cartHandler(props.id)}
-          >
-            Put in cart
-          </Button>
+          <Card.Text>Price: ${props.price}</Card.Text>
+          <Card.Text>
+            Choose color: <input type="color" />
+          </Card.Text>
         </Card.Body>
       </Card>
     </Col>

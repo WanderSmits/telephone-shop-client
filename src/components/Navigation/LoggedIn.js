@@ -7,6 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { selectCart } from "../../store/cart/selectors";
 
 import {
   faShoppingCart,
@@ -15,8 +16,12 @@ import {
 } from "@fortawesome/fontawesome-free-solid";
 
 export default function LoggedIn() {
+  const cartProducts = useSelector(selectCart);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
+  const numberOfCartItems = cartProducts.length;
+
   return (
     <>
       <NavbarBrand href="#home">
@@ -27,6 +32,7 @@ export default function LoggedIn() {
       </NavbarBrand>
       <NavbarBrand as={Link} to="/cart">
         <FontAwesomeIcon className="mr-3" icon={faShoppingCart} />
+        {numberOfCartItems}
       </NavbarBrand>
       <Button onClick={() => dispatch(logOut())}>Logout</Button>
     </>
