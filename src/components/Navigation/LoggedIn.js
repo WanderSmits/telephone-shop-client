@@ -27,7 +27,7 @@ export default function LoggedIn() {
       <NavbarBrand href="#home">
         <FontAwesomeIcon className="mr-3" icon={faSearch} />
       </NavbarBrand>
-      <NavbarBrand href="#home">
+      <NavbarBrand as={Link} to="/listproduct">
         <FontAwesomeIcon className="mr-3" icon={faUser} />
       </NavbarBrand>
       <NavbarBrand as={Link} to="/cart">
