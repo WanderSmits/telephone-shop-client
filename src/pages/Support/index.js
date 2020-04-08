@@ -59,11 +59,7 @@ export default function Support() {
             </tr>
           </tbody>
         </Table>
-        <Link to="/termandcondition" style={{ textAlign: "center" }}>
-          Read more about Terms and Condition!
-        </Link>
-        {/* <ContactFormSupport /> */}
-        {/* <TermsCondition /> */}
+        <TermsCondition />
       </Container>
     </div>
   );
