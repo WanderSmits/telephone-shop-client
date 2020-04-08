@@ -6,34 +6,53 @@ import {
   showMessageWithTimeout,
   setMessage,
 } from "../appState/actions";
-// import { selectToken } from "../user/selectors";
+import { selectToken } from "../user/selectors";
+import { selectUser } from "../../store/user/selectors";
 
 export const POST_QUESTION_FORM = "POST_QUESTION_FORM";
 
-export const postQuestionFormSuccess = (questions) => ({
+export const postSupportSuccess = (question) => ({
   type: POST_QUESTION_FORM,
-  payload: questions,
+  payload: question
 });
 
-export const postQuestionForm = () => {
+
+export const postSupport = (subject, description, link, reason) => {
   return async (dispatch, getState) => {
-    dispatch(appLoading());
-
     try {
-      const response = await axios.get(`${apiUrl}/support`);
+      const token = selectToken(getState());
+      const user = selectUser(getState());
+      const userId = parseInt(user.id)
+      // console.log(subject, description, link, reason, userId);
 
-      // console.log(response.data);
-      dispatch(fetchProductsSuccess(response.data));
-      dispatch(appDoneLoading());
+      const response = await axios.post(
+        `${apiUrl}/support`,
+        {
+          subject, 
+          description, 
+          link, 
+          reason, 
+          userId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      console.log("Yep!", response.data.newSupport);
+
+      dispatch(
+        showMessageWithTimeout("success", false, response.data.message, 300000)
+      );
+      dispatch(postSupportSuccess(response.data.newSupport));
     } catch (error) {
       if (error.response) {
-        // console.log(error.response.message);
         dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        // console.log(error);
         dispatch(setMessage("danger", true, error.message));
       }
-      dispatch(appDoneLoading());
     }
   };
 };

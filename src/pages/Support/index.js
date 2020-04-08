@@ -1,14 +1,12 @@
 import React from "react";
-import { Button, Form, Col, Container, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import ContactFormSupport from "./contactFormSupport";
+import { Container, Table } from "react-bootstrap";
 import TermsCondition from "./termsCondition";
 
 export default function Support() {
   return (
     <div>
       <Container>
-        <h1>Delivery information</h1>
+        <h1 className="mb-5 mt-5 text-center">Delivery information</h1>
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
@@ -27,12 +25,12 @@ export default function Support() {
                 residential addresses may be delivered on a Sunday.
               </td>
               <td>
-                Orders including at least £10 or more of eligible books qualify
-                for FREE Delivery. All orders of £20 or more of eligible items
+                Orders including at least €10 or more of eligible books qualify
+                for FREE Delivery. All orders of €20 or more of eligible items
                 across any product category also qualify for FREE Delivery.
-                Orders including £10 or more of eligible books, dispatched by
+                Orders including €10 or more of eligible books, dispatched by
                 Amazon, qualify for FREE Delivery to Ireland (Including local
-                VAT). All orders of £20 or more of eligible items, dispatched by
+                VAT). All orders of €20 or more of eligible items, dispatched by
                 Amazon, across any product category also qualify for FREE
                 Delivery to Ireland (Including local VAT). For more information
                 see FREE Delivery. Terms & conditions apply.
@@ -41,10 +39,10 @@ export default function Support() {
             <tr>
               <td>Premium Delivery</td>
               <td>
-                £4.99 per delivery. No extra cost for Amazon Prime members.
+                €4.99 per delivery. No extra cost for Amazon Prime members.
                 Visit Prime Delivery for more information. Premium Delivery to
                 an Amazon Locker or Pickup Location is charged at a flat rate of
-                £2.99 for all eligible items for non-Prime members.
+                €2.99 for all eligible items for non-Prime members.
               </td>
               <td>
                 1 business day after dispatch, including Saturdays but not
