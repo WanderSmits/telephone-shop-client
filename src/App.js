@@ -16,6 +16,8 @@ import { Jumbotron } from "react-bootstrap";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Support from "./pages/Support";
+import ContactFormSupport from "./pages/Support/contactFormSupport";
+import TermsAndConditions from "./pages/Support/termsCondition";
 
 const Other = () => (
   <Jumbotron>
@@ -39,6 +41,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Products} />
         <Route path="/support" component={Support} />
+        <Route path="/contactus" component={ContactFormSupport} />
+        <Route path="/termandcondition" component={TermsAndConditions} />
         <Route path="/products/:id" component={ProductDetails} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />

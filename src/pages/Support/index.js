@@ -1,5 +1,8 @@
 import React from "react";
 import { Button, Form, Col, Container, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import ContactFormSupport from "./contactFormSupport";
+import TermsCondition from "./termsCondition";
 
 export default function Support() {
   return (
@@ -56,20 +59,7 @@ export default function Support() {
             </tr>
           </tbody>
         </Table>
-
-        <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-          <h3 className="mt-5 mb-5">Contact Form</h3>
-          <Form.Group>
-            <Form.Label>Name</Form.Label>
-            <Form.Control />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Question</Form.Label>
-            <Form.Control />
-          </Form.Group>
-
-          <Button> Send</Button>
-        </Form>
+        <TermsCondition />
       </Container>
     </div>
   );
