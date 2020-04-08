@@ -42,7 +42,7 @@ function App() {
         <Route exact path="/" component={Products} />
         <Route path="/support" component={Support} />
         <Route path="/contactus" component={ContactFormSupport} />
-        <Route path="termcondition" component={TermsAndConditions} />
+        <Route path="/termandcondition" component={TermsAndConditions} />
         <Route path="/products/:id" component={ProductDetails} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
