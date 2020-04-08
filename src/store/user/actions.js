@@ -39,6 +39,7 @@ export const signUp = (name, email, password, isOwner) => {
         isOwner,
 
 
+      
       });
 
       dispatch(loginSuccess(response.data));
