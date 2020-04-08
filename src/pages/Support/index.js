@@ -59,10 +59,10 @@ export default function Support() {
             </tr>
           </tbody>
         </Table>
-        {/* <Link to="/signup" style={{ textAlign: "center" }}>
-          Contact Us!
-        </Link> */}
-        <ContactFormSupport />
+        <Link to="/termandcondition" style={{ textAlign: "center" }}>
+          Read more about Terms and Condition!
+        </Link>
+        {/* <ContactFormSupport /> */}
         {/* <TermsCondition /> */}
       </Container>
     </div>
