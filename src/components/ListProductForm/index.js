@@ -12,16 +12,43 @@ export default function ListProductForm() {
   const [imageUrl, setImageUrl] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+
+  const [operatingSystem, setOperatingSystem] = useState("");
+  const [batteryLife, setBatteryLife] = useState("");
+  const [screenSize, setScreensize] = useState("");
+  const [weightInGrams, setWeightInGrams] = useState("");
+  const [virtualAssistant, setVirtualAssistant] = useState("");
+  const [guaranteeInYears, setGuaranteeInYears] = useState("");
+
   const dispatch = useDispatch();
 
   function submitForm(event) {
     event.preventDefault();
 
-    dispatch(postNewProduct(productName, imageUrl, price, description));
+    dispatch(
+      postNewProduct(
+        productName,
+        imageUrl,
+        price,
+        description,
+        operatingSystem,
+        batteryLife,
+        screenSize,
+        weightInGrams,
+        virtualAssistant,
+        guaranteeInYears
+      )
+    );
     setProductName("");
     setImageUrl("");
     setPrice("");
     setDescription("");
+    setOperatingSystem("");
+    setBatteryLife("");
+    setScreensize("");
+    setWeightInGrams("");
+    setVirtualAssistant("");
+    setGuaranteeInYears("");
   }
 
   return (
@@ -70,6 +97,71 @@ export default function ListProductForm() {
             required
           />
         </Form.Group>
+
+        <h1 className="mt-5 mb-5">Specify product details</h1>
+        <Form.Group>
+          <Form.Label>Operating System</Form.Label>
+          <Form.Control
+            value={operatingSystem}
+            onChange={(event) => setOperatingSystem(event.target.value)}
+            type="string"
+            placeholder="Operating System"
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Battery life</Form.Label>
+          <Form.Control
+            value={batteryLife}
+            onChange={(event) => setBatteryLife(event.target.value)}
+            type="string"
+            placeholder="Enter Image Url"
+            required
+          />
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Screen Size</Form.Label>
+          <Form.Control
+            value={screenSize}
+            onChange={(event) => setScreensize(event.target.value)}
+            type="integer"
+            placeholder="screen size"
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Weight in grams</Form.Label>
+          <Form.Control
+            value={weightInGrams}
+            onChange={(event) => setWeightInGrams(event.target.value)}
+            type="integer"
+            placeholder="Weight in grams"
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Virtual Assistant</Form.Label>
+          <Form.Control
+            value={virtualAssistant}
+            onChange={(event) => setVirtualAssistant(event.target.value)}
+            type="string"
+            placeholder="Virtual assistant"
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Guarantee in years</Form.Label>
+          <Form.Control
+            value={guaranteeInYears}
+            onChange={(event) => setGuaranteeInYears(event.target.value)}
+            type="integer"
+            placeholder="Guarantee"
+            required
+          />
+        </Form.Group>
+
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
             Post new product
