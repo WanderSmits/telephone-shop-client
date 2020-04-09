@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchProductById } from "../../store/productDetails/actions";
 import { selectProductDetails } from "../../store/productDetails/selectors";
+import { addToCart } from "../../store/cart/actions";
 
 import Container from "react-bootstrap/Container";
 import { Jumbotron } from "react-bootstrap";
@@ -24,6 +25,11 @@ export default function ProductDetails() {
   }, [dispatch, id]);
 
   if (!product.detail) return <h5>Loading</h5>;
+
+  const cartHandler = (id) => {
+    dispatch(addToCart(id));
+    // console.log(`click cart`, id);
+  };
 
   return (
     <div>
@@ -89,7 +95,7 @@ export default function ProductDetails() {
             </Table>
             <div className="mb-5 mt-3 align-middle">
               <div className="d-inline mr-3">&euro; {product.price}</div>
-              <Button variant="success">
+              <Button variant="success" onClick={() => cartHandler(product.id)}>
                 Add to Cart
               </Button>
             </div>
