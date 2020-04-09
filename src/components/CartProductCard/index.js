@@ -28,9 +28,9 @@ export default function CartCard(props) {
             </Button>
           </Link>
           <Card.Text>Price: ${props.price}</Card.Text>
-          <Card.Text>
+          {/* <Card.Text>
             Choose color: <input type="color" />
-          </Card.Text>
+          </Card.Text> */}
         </Card.Body>
       </Card>
     </Col>
