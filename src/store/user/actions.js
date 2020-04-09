@@ -37,9 +37,6 @@ export const signUp = (name, email, password, isOwner) => {
         password,
 
         isOwner,
-
-
-
       });
 
       dispatch(loginSuccess(response.data));
@@ -116,7 +113,18 @@ export const getUserWithStoredToken = () => {
   };
 };
 
-export const postNewProduct = (productName, imageUrl, price, description) => {
+export const postNewProduct = (
+  productName,
+  imageUrl,
+  price,
+  description,
+  operatingSystem,
+  batteryLife,
+  screenSize,
+  weightInGrams,
+  virtualAssistant,
+  guaranteeInYears
+) => {
   return async (dispatch, getState) => {
     const user = selectUser(getState());
 
@@ -139,6 +147,12 @@ export const postNewProduct = (productName, imageUrl, price, description) => {
           price,
           description,
           userId: user.id,
+          operatingSystem,
+          batteryLife,
+          screenSize,
+          weightInGrams,
+          virtualAssistant,
+          guaranteeInYears,
         },
         {
           headers: { Authorization: `Bearer ${user.token}` },
