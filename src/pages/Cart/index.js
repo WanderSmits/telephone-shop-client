@@ -26,7 +26,7 @@ export default function CartPage() {
     return parseInt(cartProducts[values].id);
   });
 
-  // console.log("CArt products?", cartProducts);
+  console.log("CArt products?", cartProducts);
 
   function submitOrder(id) {
     console.log("Id?", id);
@@ -34,7 +34,12 @@ export default function CartPage() {
     dispatch(clearState());
   }
 
-  console.log(`Express deliv?`, delivery);
+  const allCartProducts = !cartProducts.price
+    ? "0"
+    : cartProducts &&
+      cartProducts.reduce((a, b) => ({ price: a.price + b.price }));
+
+  console.log(`Express deliv?`, allCartProducts);
 
   return (
     <main>
@@ -63,31 +68,21 @@ export default function CartPage() {
       </Container>
 
       <div>
-        <Container>
+        {/* <Container>
           <Col sm={12} md={4} className="mb-4">
             <Card>
               <Card.Body>
-                <Card.Title>Choose delivery</Card.Title>
+                <Card.Title>Total price</Card.Title>
                 <Card.Text>
-                  {" "}
-                  <input
-                    type="checkbox"
-                    onChange={() => setDelivery(true)}
-                  />{" "}
-                  Express delivery (+10$)
-                </Card.Text>
-                <Card.Text>
-                  <input type="checkbox" onChange={() => setDelivery(false)} />{" "}
-                  Standard delivery (free)
-                </Card.Text>
-                <Card.Text>
-                  Total Price: Sum of all products + delivery
-                </Card.Text>
+                  Total price of all products: $
+                  {allCartProducts.price && allCartProducts.price} */}
+        {/* {/* </Card.Text>
               </Card.Body>
             </Card>
           </Col>{" "}
-          <Button onClick={() => submitOrder(allProducts)}> Buy now!</Button>
-        </Container>
+
+        </Container> */}
+        <Button onClick={() => submitOrder(allProducts)}> Buy now!</Button>
       </div>
       {/* <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
         <h3 className="mt-5 mb-5">Your information</h3>
