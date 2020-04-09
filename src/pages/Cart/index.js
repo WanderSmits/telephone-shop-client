@@ -34,6 +34,10 @@ export default function CartPage() {
     dispatch(clearState());
   }
 
+  const allCartProducts =
+    cartProducts &&
+    cartProducts.reduce((a, b) => ({ price: a.price + b.price }));
+
   console.log(`Express deliv?`, delivery);
 
   return (
@@ -67,22 +71,8 @@ export default function CartPage() {
           <Col sm={12} md={4} className="mb-4">
             <Card>
               <Card.Body>
-                <Card.Title>Choose delivery</Card.Title>
-                <Card.Text>
-                  {" "}
-                  <input
-                    type="checkbox"
-                    onChange={() => setDelivery(true)}
-                  />{" "}
-                  Express delivery (+10$)
-                </Card.Text>
-                <Card.Text>
-                  <input type="checkbox" onChange={() => setDelivery(false)} />{" "}
-                  Standard delivery (free)
-                </Card.Text>
-                <Card.Text>
-                  Total Price: Sum of all products + delivery
-                </Card.Text>
+                <Card.Title>Total price</Card.Title>
+                <Card.Text>Sum of all products {cartProducts}</Card.Text>
               </Card.Body>
             </Card>
           </Col>{" "}
