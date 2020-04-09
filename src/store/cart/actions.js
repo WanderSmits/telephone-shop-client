@@ -37,3 +37,8 @@ export const addToCart = (id) => {
     }
   };
 };
+
+export const clearState = () => ({
+  type: "CLEAR_CART",
+  payload: [],
+});

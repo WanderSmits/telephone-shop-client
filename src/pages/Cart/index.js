@@ -5,6 +5,7 @@ import { selectCart } from "../../store/cart/selectors";
 import { postOrder } from "../../store/postOrder/actions";
 import { selectOrder } from "../../store/postOrder/selector";
 import { addToCart } from "../../store/cart/actions";
+import { clearState } from "../../store/cart/actions";
 
 import {
   Jumbotron,
@@ -29,6 +30,7 @@ export default function CartPage() {
   function submitOrder(id) {
     console.log("Id?", id);
     dispatch(postOrder(id));
+    dispatch(clearState());
   }
 
   return (

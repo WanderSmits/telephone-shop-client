@@ -8,6 +8,9 @@ export default (state = initialState, action) => {
 
       return [...state, { ...action.payload }];
 
+    case "CLEAR_CART":
+      return [];
+
     default:
       return state;
   }
